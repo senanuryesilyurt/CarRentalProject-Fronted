@@ -1,0 +1,31 @@
+<h3><b>MARKALAR</b></h3>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    (click)="setCurrentBrand(brand)"
+    *ngFor="let brand of brands"
+    [class]="getCurrentBrandClass(brand)"
+    routerLink="/cars/brands/{{brand.brandId}}">
+    {{ brand.brandName }}
+  </li>
+</ul>
+
+<!--<h5>Marka Seçin</h5>
+<div class="row">
+  <div class="col-md-6">
+    <br />
+    <form [formGroup]="selectBrandForm">
+      <select formControlName="brandControl" [(ngModel)]="selectedbrand">
+        <option [ngValue]="brand[0]" *ngFor="let brand of brands" [selected]="brand.brandName">
+          {{ brand.brandName }}
+        </option>
+      </select>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <br />
+    <button class="btn btn-success" type="button" >Filtrele</button>
+  </div>
+</div>-->
+

@@ -1,0 +1,95 @@
+<div class="row" style="margin-left: 20px;">
+  <div class="filter">
+    <br />
+    <div class="row">
+      <div class="col-md-4">
+        <select
+          class="form-select"
+          id="brandselect"
+          [(ngModel)]="currentBrandName"
+        >
+          <option [ngValue]="undefined" disabled selected>Marka Seçiniz</option>
+          <option
+            *ngFor="let brand of brands"
+            [value]="brand.brandName"
+            [selected]="setCurrentBrand(brand.brandName)"
+          >
+            {{ brand.brandName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <select
+          class="form-select"
+          id="colorselect"
+          [(ngModel)]="currentColorName"
+        >
+          <option [ngValue]="undefined" disabled selected>Renk Seçiniz</option>
+          <option
+            *ngFor="let color of colors"
+            [value]="color.colourName"
+            [selected]="setCurrentColor(color.colourName)"
+          >
+            {{ color.colourName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-1">
+        <button
+          class="btn btn-warning"
+          (click)="getFilter(currentBrandName, currentColorName)">
+          Filtrele
+        </button>
+      </div>
+
+      <div class="col-md-2">
+        <button class="btn btn-dark" routerLink="/cars" (click)="ClearFilter()">Temizle</button>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+<br />
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araç adı arayın</label>
+  <input
+  style="width: 900px;"
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Arama ifadesi giriniz"
+  />
+</div>
+<div *ngIf="filterText.length > 2" class="alert alert-warning">
+  {{ filterText }} aradınız
+</div>
+
+<div class="row">
+  <table *ngIf="dataLoaded != false" class="table" style="text-align: center;">
+    <thead>
+      <tr>
+        <th>Aracın Modeli</th>
+        <th>Model Yılı</th>
+        <th>Açıklama</th>
+        <th>Günlük Fiyat</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let car of cars | carFilterPipe: filterText" >
+      <td>{{ car.carName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.description }}</td>
+      <td>{{ car.dailyPrice }}</td>
+
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        routerLink="/cars/car-details/{{ car.carId }}"
+      >
+        Detaylar
+      </button>
+    </tr>
+  </table>
+</div>

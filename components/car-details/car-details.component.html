@@ -1,0 +1,31 @@
+
+<div class="row" *ngIf="hideButton != false">
+  <div
+    class="card"
+    *ngFor="let carDetail of carDetails"
+    style="text-align: center; width: 950px"
+  >
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Id: {{ carDetail.carId }}</li>
+      <li class="list-group-item">Marka: {{ carDetail.brandName }}</li>
+      <li class="list-group-item">Model: {{ carDetail.carName }}</li>
+      <li class="list-group-item">Renk: {{ carDetail.colourName }}</li>
+      <li class="list-group-item">Model Yılı: {{ carDetail.modelYear }}</li>
+      <li class="list-group-item">Açıklama: {{ carDetail.description }}</li>
+      <li class="list-group-item">Fiyat: {{ carDetail.dailyPrice }}</li>
+    </ul>
+  </div>
+</div>
+<br />
+<button
+  type="button"
+  class="btn btn-success"
+  style="width: 800px; margin-left: 63px"
+  (click)="getShow()" *ngIf="hideButton != false">
+  Kirala
+</button>
+
+
+<div *ngIf="rentalStatus!=false" >
+  <app-rental></app-rental>
+</div>

@@ -1,0 +1,31 @@
+<h3><b>RENKLER</b></h3>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    (click)="setCurrentColor(color)"
+    *ngFor="let color of colours"
+    [class]="getCurrentColorClass(color)"
+    routerLink="/cars/colours/{{ color.colourId }}"
+  >
+    {{ color.colourName }}
+  </li>
+</ul>
+
+<!--<h5>Renk Seçin</h5>
+<div class="row">
+  <div class="col-md-6">
+    <br />
+    <form [formGroup]="selectColorControl">
+      <select class="form-selected">
+        <option [ngValue]="color[0]" *ngFor="let color of colours" [selected]="color.colourName">
+          {{ color.colourName }}
+        </option>
+      </select>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <br />
+    <button class="btn btn-success" type="button" >Filtrele</button>
+  </div>
+</div>-->

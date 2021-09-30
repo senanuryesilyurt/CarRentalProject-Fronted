@@ -1,0 +1,72 @@
+
+<h3 style="font-size: x-large; text-align: center;">----- Araç Kiralama -----</h3>
+<div class="card" style="width: 500px; ">
+  <div class="card-body"  *ngFor="let item of carDetails">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Id: {{ item.carId }}</li>
+      <li class="list-group-item">Marka: {{ item.brandName }}</li>
+      <li class="list-group-item">Model: {{ item.carName }}</li>
+      <li class="list-group-item">Renk: {{ item.colourName }}</li>
+      <li class="list-group-item">Model Yılı: {{ item.modelYear }}</li>
+      <li class="list-group-item">Açıklama: {{ item.description }}</li>
+      <li class="list-group-item">Fiyat: {{ item.dailyPrice }}</li>
+    </ul>
+  </div>
+</div>
+
+<br>
+<div class="row" >
+  <div class="row">
+    <label>*Tarih Aralığı Giriniz</label>
+    <mat-form-field appearance="fill">
+      <mat-label> Kiralama - Teslim Tarihi Seçiniz</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input
+          matStartDate
+          placeholder="Alış Tarihi"
+          [(ngModel)]="kiralamaTarihi"
+        />
+        <input
+          matEndDate
+          placeholder="Teslim Tarihi"
+          [(ngModel)]="teslimTarihi"
+        />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" style="width:450px ;">
+        <mat-label>Müşteri Seçiniz</mat-label>
+        <mat-select [(ngModel)]="selectedCustomerId">
+          <mat-option *ngFor="let customer of customers" [value]="customer.customerId">
+            {{customer.firstName}} {{customer.lastName}} --- {{customer.companyName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6"  *ngFor="let item of carDetails">
+      <br />
+      <p>ÜCRET : {{item.dailyPrice}} TL</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success" style="width: 450px" routerLink="rental" >
+        Kirala
+      </button>
+    </div>
+
+    <div class="col-md-6">
+      <button type="button" class="btn btn-danger" style="width: 450px">
+        İptal
+      </button>
+    </div>
+</div>
