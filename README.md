@@ -15,3 +15,4 @@ Bir araç kiralama sitesinin ön yüz tarafı geliştirilmiştir.
 
 ### Görünüm
 ![](https://github.com/senanuryesilyurt/CarRentalProject-Fronted/blob/main/photos/RentACar.png)
+![](https://github.com/senanuryesilyurt/CarRentalProject-Fronted/blob/main/photos/RentACar_2.png)
